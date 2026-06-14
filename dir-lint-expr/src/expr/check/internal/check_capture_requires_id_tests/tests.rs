@@ -1,0 +1,7 @@
+mod dir_entry_with_named_capture_and_no_id_is_e026;
+mod file_entry_with_named_capture_and_no_id_is_e026;
+mod fixtures;
+mod id_bearing_dir_with_named_capture_is_ok;
+mod id_bearing_file_with_named_capture_is_ok;
+mod id_less_entry_with_exact_pattern_is_ok;
+mod id_less_entry_without_named_capture_is_ok;

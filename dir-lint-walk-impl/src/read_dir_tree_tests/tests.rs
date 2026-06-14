@@ -1,0 +1,8 @@
+mod fixtures;
+mod test_anchored_path_skips_only_that_path;
+mod test_config_globs_and_gitignore_combined;
+mod test_double_star_target_is_skipped;
+mod test_gitignore_negation_reinclude;
+mod test_nested_gitignore_skips_grandchild;
+mod test_permission_denied_includes_path;
+mod test_root_gitignore_skips_dir;

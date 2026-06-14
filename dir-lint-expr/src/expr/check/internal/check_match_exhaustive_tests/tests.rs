@@ -1,0 +1,8 @@
+mod fixtures;
+
+mod for_ns_scrutinee_is_recognized_as_sum;
+mod for_ns_scrutinee_non_exhaustive_is_error;
+mod test_dead_arm_is_error;
+mod test_exhaustive_match_is_not_an_error;
+mod test_missing_arm_is_error;
+mod test_scrutinee_not_a_sum_is_error;

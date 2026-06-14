@@ -1,0 +1,2 @@
+mod test_bare_string_deserializes_as_exact;
+mod test_regex_only_deserializes_as_spec;

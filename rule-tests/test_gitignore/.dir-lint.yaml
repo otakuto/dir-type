@@ -1,0 +1,10 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .dir-lint.yaml
+      - file: .gitignore
+      - file: readme.txt

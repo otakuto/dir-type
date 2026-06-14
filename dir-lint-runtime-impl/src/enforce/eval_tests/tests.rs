@@ -1,0 +1,105 @@
+mod test_cross_tree;
+mod test_for_binding_fallback;
+mod test_required;
+mod test_required_context;
+mod test_scope_to_scalar_record;
+mod test_set_expand;
+
+// test_count (13 tests)
+mod test_count_exact_absent_emits_count_violation_not_required;
+mod test_count_exact_present_ok;
+mod test_count_in_choice_alternative_not_realized_with_one;
+mod test_count_in_choice_alternative_realizes_with_two;
+mod test_count_in_for_is_independent_per_binding;
+mod test_count_pattern_one_ok;
+mod test_count_pattern_three_violation;
+mod test_count_pattern_zero_violation;
+mod test_default_min1_regex_one_match_ok;
+mod test_default_min1_regex_zero_match_emits_count_violation;
+mod test_max_only_implies_min1;
+mod test_optional_with_max_allows_zero;
+mod test_optional_with_max_violation_on_excess;
+
+// test_choice (5 tests)
+mod test_choice_0_1_both_violation;
+mod test_choice_0_1_none_ok;
+mod test_choice_0_1_single_ok;
+mod test_choice_max_zero_empty_ok;
+mod test_choice_max_zero_forbids;
+
+// test_for (7 tests)
+mod after_for_deny_by_default_undeclared_file_is_error;
+mod for_in_empty_set_zero_iterations_no_error;
+mod for_in_literal_list_files_become_required;
+mod for_in_literal_list_missing_file_is_error;
+mod for_in_scope_scalar_var_iterates_as_single_element;
+mod for_in_scope_set_var_iterates_each_element;
+mod nested_for_cartesian_product_is_generated;
+
+// test_for_record (3 tests)
+mod for_in_bare_id_iterates_record_set_and_expands_field_to_file_name;
+mod for_nested_child_set_iteration_preserves_group;
+mod record_in_scope_expands_field_to_file_name;
+
+// test_hermetic_scope (3 tests)
+mod test_contents_only_structure_recursion;
+mod test_structure_scope_is_hermetic;
+mod test_structure_with_input_and_capture;
+
+// test_for_group (2 tests)
+mod test_for_group_one_per_binding_ok;
+mod test_for_group_two_in_one_binding_violation;
+
+// test_for_binding_scope (2 tests)
+mod test_for_binding_scope_foreign_is_undeclared;
+mod test_for_binding_scope_self_isolation_ok;
+
+// test_oneof (6 tests)
+mod test_oneof_exactly_one_both_match_violation;
+mod test_oneof_exactly_one_none_match_violation;
+mod test_oneof_exactly_one_single_match_no_error;
+mod test_oneof_optional_both_match_violation;
+mod test_oneof_optional_none_match_no_error;
+mod test_oneof_optional_single_match_no_error;
+
+// test_content_choice (5 tests)
+mod test_content_choice_any_of_none_valid_reports_closest;
+mod test_content_choice_any_of_one_valid_no_error;
+mod test_content_choice_one_of_both_valid_violation;
+mod test_content_choice_one_of_single_valid_no_error;
+mod test_group_non_own_alternatives;
+mod test_nested_content_choice_memoized_correct;
+mod test_splice_group_with_sibling;
+
+// test_deny_by_default (4 tests)
+mod test_check_false_entry_skips_enforcement;
+mod test_regex_file_match_allows_multiple_rs_files;
+mod test_regex_file_match_denies_invalid_name;
+mod test_undeclared_dir_produces_error;
+
+// test_local_overlay (3 tests)
+mod test_local_overlay_detect_extra_handler;
+mod test_local_overlay_detect_missing_handler;
+mod test_local_overlay_prevents_scope_leak;
+
+// test_resolve_with_value (2 tests)
+mod test_resolve_with_value_bare_dot_is_literal;
+mod test_resolve_with_value_bare_id_passes_through_record_list;
+
+// test_multinode_oneof (4 tests)
+mod test_multinode_oneof_ambiguous_is_cardinality_violation;
+mod test_multinode_oneof_none_realizes_is_violation;
+mod test_multinode_oneof_pair_realizes;
+mod test_multinode_oneof_single_realizes_when_one_present;
+
+// test_produced (10 tests)
+mod produced_file_id_has_capture_fields;
+mod produced_for_id_inside_splice_bubbles_up;
+mod produced_for_id_wrap;
+mod produced_for_id_wrap_carries_binding_fields;
+mod produced_for_id_wrap_multinode_tag;
+mod produced_group_tag;
+mod produced_idless_dir_bubbles_up;
+mod produced_multinode_group_no_parent_leak;
+mod produced_nested_id_dir_children;
+mod produced_record_intro_no_parent_leak;

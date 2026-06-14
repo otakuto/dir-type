@@ -1,0 +1,11 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .dir-lint.yaml
+      - file: required.txt
+      - file: extra.txt
+        optional: true

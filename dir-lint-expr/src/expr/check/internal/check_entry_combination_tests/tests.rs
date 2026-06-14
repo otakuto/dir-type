@@ -1,0 +1,33 @@
+mod fixtures;
+
+mod test_dir_skip_marker_with_inline_is_error;
+mod test_file_skip_marker_is_error;
+
+mod test_adding_count_to_splice_is_error;
+mod test_adding_max_to_splice_is_error;
+mod test_adding_min_to_for_is_error;
+mod test_adding_min_to_splice_is_error;
+mod test_adding_optional_to_group_is_error;
+mod test_bare_rule_splice_is_not_an_error;
+mod test_choice_max_zero_is_legal;
+mod test_choice_min_exceeding_max_is_error;
+mod test_count_coexisting_with_min_max_is_error;
+mod test_count_min_exceeding_max_is_error;
+mod test_dir_entry_with_colocated_rule_is_error;
+mod test_dir_only_entry_is_not_an_error;
+mod test_entry_with_no_name_descriptor_is_error;
+mod test_exact_pattern_count_scalar_two_is_error;
+mod test_exact_pattern_max_exceeding_one_is_error;
+mod test_explicit_group_marker_is_not_an_error;
+mod test_implicit_group_without_marker_is_error;
+mod test_min_one_on_alternative_is_legal;
+mod test_min_zero_on_alternative_is_error;
+mod test_optional_coexisting_with_count_is_error;
+mod test_optional_coexisting_with_min_is_error;
+mod test_optional_true_on_alternative_is_error;
+mod test_optional_true_on_splice_is_legal;
+mod test_regex_with_count_scalar_is_valid;
+mod test_regex_with_min_max_is_valid;
+mod test_splice_with_colocated_rules_is_error;
+mod test_splice_with_id_is_legal;
+mod test_value_binding_is_not_an_error;

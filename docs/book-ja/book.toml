@@ -1,0 +1,7 @@
+[book]
+title = "dir-lint"
+authors = ["Tact Yoshida"]
+language = "ja"
+src = "src"
+
+[preprocessor.cmdrun]

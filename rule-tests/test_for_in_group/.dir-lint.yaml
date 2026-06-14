@@ -1,0 +1,19 @@
+version: 0
+
+entry: root
+
+rules:
+  # for-in-group: the one_of alternative is a for block, coexisting with a sibling file: c.txt.
+  # for is a non-Own alternative so it is treated as multinode, and realize is judged against the content model after binding expansion.
+  # Because a.txt and b.txt both exist, the for block realizes (1), so the outer one_of also realizes (1) and the check passes.
+  - rule: root
+    ::
+      - file: .dir-lint.yaml
+      - one_of:
+        ::
+          - for:
+              id: x
+              value: [a, b]
+            ::
+              - file: '${value.x}.txt'
+          - file: c.txt

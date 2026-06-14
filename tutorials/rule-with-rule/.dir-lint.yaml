@@ -1,0 +1,45 @@
+version: 0
+
+entry: root
+
+# Example of passing a rule via with.
+# Each component record captured from components/ is passed to the doc_for rule via with,
+# and docs/<name>.md is required based on the captured name.
+rules:
+  - rule: root
+    ::
+      - dir: components
+        id: components_dir
+        ::
+          # Splice the component rule and bundle its collected results under id: comp.
+          - use: rule.component
+            id: comp
+      - dir: docs
+        ::
+          # For each collected component, pass "that component record" to doc_for via with.
+          - for:
+              id: component_entry
+              value: ${dir.components_dir.dir.comp.dir.component}
+            ::
+              - use: rule.doc_for
+                with:
+                  - id: component_entry
+                    value: ${value.component_entry}
+      - file: .dir-lint.yaml
+
+  # Capture the name of each directory directly under components/ using named capture `name`.
+  - rule: component
+    ::
+      - dir:
+          regex: '^(?<name>.+)$'
+        id: component
+        ::
+          - file: handler.rs
+
+  # Receives a component record (type: rule.component) via with and requires <name>.md derived from its regex.name.
+  - rule: doc_for
+    with:
+      - id: component_entry
+        type: rule.component
+    ::
+      - file: '${with.component_entry.regex.name}.md'

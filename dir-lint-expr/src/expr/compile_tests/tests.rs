@@ -1,0 +1,12 @@
+mod helpers;
+
+mod test_any_of_bare_rule_references_become_splice_alternatives;
+mod test_dir_entry_with_colocated_rule_returns_err;
+mod test_duplicate_id_across_sibling_dirs_returns_err;
+mod test_duplicate_rule_name_returns_err;
+mod test_entry_referencing_undefined_rule_returns_err;
+mod test_entry_splicing_rule_produces_splice_named_matcher;
+mod test_one_of_entry_builds_expr_matcher_group;
+mod test_undefined_rule_reference_returns_err;
+mod test_valid_yaml_config_builds_config_expr;
+mod test_value_entry_produces_bind_matcher;

@@ -1,0 +1,27 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .dir-lint.yaml
+      - dir: items
+        id: items_dir
+        ::
+          # Capture each subdirectory name inside items/ using the named capture `name` and collect them as id:item.
+          - dir:
+              regex: '^(?<name>[a-z]+)$'
+            id: item
+            ::
+              - file: src.txt
+      - dir: mirror
+        ::
+          # For each item collected from items/, require a same-named directory in mirror/ containing copy.txt.
+          - for:
+              id: it
+              value: ${dir.items_dir.dir.item}
+            ::
+              - dir: '${value.it.regex.name}'
+                ::
+                  - file: copy.txt

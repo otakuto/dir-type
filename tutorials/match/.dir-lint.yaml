@@ -1,0 +1,36 @@
+version: 0
+entry: root
+rules:
+  - rule: root
+    ::
+      - file: .dir-lint.yaml
+      - dir: components
+        id: components
+        ::
+          - any_of:
+            id: items
+            ::
+              - id: service
+                dir:
+                  regex: '^(?<svc>.+)-service$'
+                ::
+                  - file: handler.rs
+              - id: config
+                file:
+                  regex: '^(?<cfg>.+)\.conf$'
+      - dir: docs
+        ::
+          - for:
+              id: item
+              value: ${dir.components.choice.items}
+            ::
+              - match: ${value.item}
+                ::
+                  - group:
+                    id: service
+                    ::
+                      - file: '${value.item.regex.svc}.md'
+                  - group:
+                    id: config
+                    ::
+                      - file: '${value.item.regex.cfg}.md'

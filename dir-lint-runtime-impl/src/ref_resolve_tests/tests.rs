@@ -1,0 +1,5 @@
+mod test_resolve_chain_dir_then_dir;
+mod test_resolve_chain_field_returns_none;
+mod test_resolve_chain_flatten_over_set;
+mod test_resolve_chain_regex_zero_is_whole_match;
+mod test_resolve_chain_two_dir_then_regex;

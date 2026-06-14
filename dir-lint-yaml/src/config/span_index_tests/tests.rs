@@ -1,0 +1,15 @@
+mod ancestor_lookup_falls_back_to_parent_path;
+mod byte_offsets_are_ordered;
+mod entry_level_path_is_indexed;
+mod fixtures;
+mod invalid_yaml_returns_empty_index;
+mod multibyte_rule_span_is_correct;
+mod nested_inline_rules_entry_is_indexed;
+mod path_without_valid_ancestor_returns_none;
+mod rule_level_path_is_indexed;
+mod second_entry_level_path_is_indexed;
+mod strip_last_segment_bracket_form;
+mod strip_last_segment_dot_form;
+mod strip_last_segment_root_returns_none;
+mod strip_last_segment_single_dot_form;
+mod unknown_rule_falls_back_to_rules_block;

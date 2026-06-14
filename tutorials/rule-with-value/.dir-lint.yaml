@@ -1,0 +1,66 @@
+version: 0
+
+entry: root
+
+# Example of passing values via with.
+# Value expressions support scalars (string / number / bool) and lists (arrays of strings).
+# - prim: receives type.string and type.number literals and expands them into dir and file names.
+# - flag: receives a type.bool literal and expands it into a name (the string "true" or "false").
+# - each: receives a [type.string] array via a value binding and iterates with for.
+rules:
+  - rule: root
+    ::
+      # Pass a string literal and a number literal to type.string and type.number respectively.
+      - use: rule.prim
+        with:
+          - id: name
+            value: api
+          - id: version
+            value: 2
+      # Pass a bool literal to type.bool.
+      - use: rule.flag
+        with:
+          - id: enabled
+            value: true
+      # For arrays, create a value: list binding and pass it by reference.
+      - id: names
+        value: [alpha, beta]
+      - use: rule.each
+        with:
+          - id: items
+            value: ${value.names}
+      - file: .dir-lint.yaml
+
+  # Primitive params: string + number.
+  - rule: prim
+    with:
+      - id: name
+        type: type.string
+      - id: version
+        type: type.number
+    ::
+      - dir: '${with.name}'
+        ::
+          - file: 'v${with.version}.txt'
+
+  # Primitive param: bool. When expanded into a name, it becomes the string "true" or "false".
+  - rule: flag
+    with:
+      - id: enabled
+        type: type.bool
+    ::
+      - file: 'enabled-${with.enabled}.txt'
+
+  # Array param of [type.string]: iterate with for and require a dir for each element name.
+  - rule: each
+    with:
+      - id: items
+        type: [type.string]
+    ::
+      - for:
+          id: item
+          value: ${with.items}
+        ::
+          - dir: '${value.item}'
+            ::
+              - file: marker.txt

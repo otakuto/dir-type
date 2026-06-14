@@ -1,0 +1,89 @@
+version: 0
+entry: root
+rules:
+  - rule: root
+    ::
+      - file: .dir-lint.yaml
+      - dir: items
+        id: items
+        ::
+          # 1. fetch only the dir names (a, b, c) without consuming them.
+          - fetch:
+            id: dirs
+            ::
+              - dir:
+                  regex: '^(?<name>[a-z])$'
+                ::
+                  - file: .keep
+          # 2. classify each dir as pair (dir + same-named file) or single (exactly one of
+          #    dir/file). bind the classification set to for.classified.
+          - for:
+              id: dir_entry
+              value: ${fetch.dirs}
+            id: classified
+            ::
+              - one_of:
+                id: kind
+                ::
+                  - group:
+                    id: pair
+                    ::
+                      - dir: '${value.dir_entry.regex.name}'
+                        ::
+                          - file: .keep
+                      - file: '${value.dir_entry.regex.name}.txt'
+                  - group:
+                    id: single
+                    ::
+                      - one_of:
+                        ::
+                          - dir: '${value.dir_entry.regex.name}'
+                            ::
+                              - file: .keep
+                          - file: '${value.dir_entry.regex.name}.txt'
+          - file:
+              regex: '^[a-z]\.txt$'
+            optional: true
+      # 3. /pair: generate from the pair-tagged classification records.
+      - dir: pair
+        ::
+          - for:
+              id: record
+              value: ${dir.items.choice.classified}
+            ::
+              - match: ${value.record}
+                ::
+                  - group:
+                    id: pair
+                    ::
+                      - dir: '${value.record.regex.name}'
+                        ::
+                          - file: .keep
+                      - file: '${value.record.regex.name}.txt'
+                  - group:
+                    id: single
+                    ::
+      # 4. /single: generate from the single-tagged records, plus the lone file (d.txt).
+      - dir: single
+        ::
+          - for:
+              id: record
+              value: ${dir.items.choice.classified}
+            ::
+              - match: ${value.record}
+                ::
+                  - group:
+                    id: pair
+                    ::
+                  - group:
+                    id: single
+                    ::
+                      - one_of:
+                        ::
+                          - dir: '${value.record.regex.name}'
+                            ::
+                              - file: .keep
+                          - file: '${value.record.regex.name}.txt'
+          - file:
+              regex: '^[a-z]\.txt$'
+            optional: true

@@ -1,0 +1,21 @@
+version: 0
+
+entry: root
+
+rules:
+  # The one_of alternative is a `use:` splice, and a sibling entry (.dir-lint.yaml) coexists.
+  # A splice alternative expands the entries (= content block) of the spliced rule into the current node, and one_of
+  # controls the realize count (exactly 1). Because only a.txt exists, one_of is satisfied and the check passes.
+  - rule: root
+    ::
+      - file: .dir-lint.yaml
+      - one_of:
+        ::
+          - use: rule.a
+          - use: rule.b
+  - rule: a
+    ::
+      - file: a.txt
+  - rule: b
+    ::
+      - file: b.txt

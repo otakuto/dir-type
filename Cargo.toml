@@ -1,0 +1,38 @@
+[workspace]
+resolver = "3"
+members = ["dir-lint-*"]
+
+[workspace.package]
+edition = "2024"
+rust-version = "1.85"
+version = "0.0.0"
+publish = false
+
+license = "MIT"
+authors = ["Tact Yoshida"]
+repository = "https://github.com/otakuto/dir-lint"
+
+[workspace.dependencies]
+dir-lint-error = { path = "dir-lint-error" }
+dir-lint-yaml = { path = "dir-lint-yaml" }
+dir-lint-expr = { path = "dir-lint-expr" }
+dir-lint-runtime = { path = "dir-lint-runtime" }
+dir-lint-runtime-impl = { path = "dir-lint-runtime-impl" }
+dir-lint-walk = { path = "dir-lint-walk" }
+dir-lint-walk-impl = { path = "dir-lint-walk-impl" }
+
+anyhow = "1.0.102"
+thiserror = "2.0.18"
+clap = { version = "4.6.1", features = ["derive"] }
+codespan-reporting = "0.13.1"
+serde_json = "1.0.150"
+serde = { version = "1.0.228", features = ["derive"] }
+indexmap = { version = "2.14.0", features = ["serde"] }
+serde_yaml = "0.9.34"
+serde_path_to_error = "0.1.20"
+marked-yaml = "0.8.0"
+ignore = "0.4.26"
+regex = "1.12.4"
+rayon = "1.12.0"
+indoc = "2.0.7"
+assert_cmd = "2.2.2"

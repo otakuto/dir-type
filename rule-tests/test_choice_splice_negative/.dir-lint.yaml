@@ -1,0 +1,20 @@
+version: 0
+
+entry: root
+
+rules:
+  # Negative case: both a.txt and b.txt exist, so both splice alternatives of one_of realize.
+  # one_of requires exactly 1 realize, so this is a cardinality violation (LT003) and the check exits non-zero.
+  - rule: root
+    ::
+      - file: .dir-lint.yaml
+      - one_of:
+        ::
+          - use: rule.a
+          - use: rule.b
+  - rule: a
+    ::
+      - file: a.txt
+  - rule: b
+    ::
+      - file: b.txt

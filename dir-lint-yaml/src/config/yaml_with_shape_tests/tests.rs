@@ -1,0 +1,17 @@
+mod bare_path_segment_without_kind_is_error;
+mod bare_rule_name_is_error;
+mod composite_parse;
+mod dotted_rule_id_produces_one_element_path;
+mod dotted_rule_id_with_two_segments_produces_two_element_path;
+mod empty_array_is_error;
+mod fixtures;
+mod primitives_parse;
+mod rule_prefixed_bare_name_produces_empty_path;
+mod single_element_array_is_error;
+mod test_default_map_is_error;
+mod test_default_null_map_is_error;
+mod test_empty_map_is_error;
+mod test_map_with_unknown_key_is_error;
+mod test_multi_element_array_is_error;
+mod test_null_becomes_required_scalar;
+mod test_string_becomes_rule_type;

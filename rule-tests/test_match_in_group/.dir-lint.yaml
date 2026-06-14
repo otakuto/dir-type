@@ -1,0 +1,45 @@
+version: 0
+
+entry: root
+
+rules:
+  # match-in-group: the one_of alternative is a match block (branching on a record bound by for),
+  # coexisting with a sibling file: fallback.md. match is a non-Own alternative so it is treated as multinode,
+  # and realize is judged and expanded against the content model of the winning arm. Because auth.md corresponding
+  # to the svc of auth-service exists, match (service arm) realizes, so one_of also realizes (1) and the check passes.
+  - rule: root
+    ::
+      - file: .dir-lint.yaml
+      - dir: components
+        id: components
+        ::
+          - any_of:
+            id: items
+            ::
+              - id: service
+                dir:
+                  regex: '^(?<svc>.+)-service$'
+                ::
+                  - file: handler.rs
+              - id: config
+                file:
+                  regex: '^(?<cfg>.+)\.conf$'
+      - dir: docs
+        ::
+          - for:
+              id: c
+              value: ${dir.components.choice.items}
+            ::
+              - one_of:
+                ::
+                  - match: ${value.c}
+                    ::
+                      - group:
+                        id: service
+                        ::
+                          - file: '${value.c.regex.svc}.md'
+                      - group:
+                        id: config
+                        ::
+                          - file: '${value.c.regex.cfg}.md'
+                  - file: fallback.md

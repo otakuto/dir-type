@@ -1,0 +1,15 @@
+mod fixtures;
+
+mod test_declared_field_in_captures_is_compatible;
+mod test_declared_field_not_in_captures_is_incompatible;
+
+mod derive_shape_for_rule_with_single_public_id;
+mod derive_shape_returns_none_for_rule_with_no_public_id;
+mod derive_shape_returns_none_for_undefined_rule;
+mod derive_shape_terminates_for_self_referential_rule;
+
+mod rule_type_defined_rule_is_not_e021;
+mod rule_type_undefined_rule_is_e021;
+
+mod rule_type_matching_shape_is_compatible;
+mod rule_type_mismatched_shape_is_e018;

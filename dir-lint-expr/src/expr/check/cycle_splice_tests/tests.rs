@@ -1,0 +1,7 @@
+mod fixtures;
+
+mod test_acyclic_splice_chain_is_not_an_error;
+mod test_direct_self_splice_is_infinite_recursion_error;
+mod test_mutual_splice_cycle_is_error;
+mod test_self_reference_via_dir_is_not_an_error;
+mod test_self_splice_under_for_is_not_an_error;

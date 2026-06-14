@@ -1,0 +1,74 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .dir-lint.yaml
+      - dir: rec
+        id: rec_dir
+        ::
+          - use: rule.rec
+            id: rec
+      - dir: flat
+        ::
+          - use: rule.flatten
+            with:
+              - id: nodes
+                value: ${dir.rec_dir.dir.rec.dir.node}
+              - id: prefix
+                value: ''
+
+  # rec captures arbitrarily-named dirs at the current position as nodes (recursive). Each node may optionally
+  # contain project.txt and/or a nested feature/. Splicing rec under feature/ allows arbitrary depth.
+  - rule: rec
+    ::
+      - dir:
+          regex: '^(?<stem>[a-z0-9]+)$'
+        id: node
+        optional: true
+        ::
+          - file: project.txt
+            id: project
+            optional: true
+          - dir: feature
+            id: sub
+            optional: true
+            ::
+              - use: rule.rec
+
+  # flatten flattens nodes (the set of nodes at any depth from rec). It builds the accumulated name acc via value,
+  # requires flat/<acc>/ for nodes that have project.txt, and recurses with prefix=<acc>- for nodes that have a
+  # nested feature. Because the recursive splice is expanded at the flat/ level, all dirs appear at the same depth.
+  # The recursion is guarded by a for loop, so it converges for any finite tree produced by rec.
+  - rule: flatten
+    with:
+      - id: nodes
+        type: rule.rec
+      - id: prefix
+        type: type.string
+    ::
+      - for:
+          id: node
+          value: ${with.nodes}
+        ::
+          - id: acc
+            value: '${with.prefix}${value.node.regex.stem}'
+          - for:
+              id: project_entry
+              value: ${value.node.file.project}
+            ::
+              - dir: '${value.acc}'
+                ::
+                  - file: project.txt
+          - for:
+              id: sub_entry
+              value: ${value.node.dir.sub}
+            ::
+              - use: rule.flatten
+                with:
+                  - id: nodes
+                    value: ${value.sub_entry.dir.node}
+                  - id: prefix
+                    value: '${value.acc}-'

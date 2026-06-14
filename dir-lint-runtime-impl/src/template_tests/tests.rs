@@ -1,0 +1,11 @@
+mod test_resolve_template_dotted_reference_stays_literal;
+mod test_resolve_template_record_field_reference;
+mod test_resolve_template_record_main_value_is_whole;
+mod test_resolve_template_scalar_only;
+mod test_substitute_leaves_id_dot_var;
+mod test_substitute_leaves_unknown_var;
+mod test_substitute_multiple_vars;
+mod test_substitute_no_placeholders;
+mod test_substitute_regex_literal_escapes_value_only;
+mod test_substitute_regex_literal_simple_value_unchanged;
+mod test_substitute_replaces_known_var;
