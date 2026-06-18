@@ -37,13 +37,15 @@ jobs:
         with:
           tool: mdbook@0.4.52,mdbook-cmdrun
 
-      # 英語版 book をビルドする
+      # 英語版 book をビルドする(cmdrunの相対パスのためbookディレクトリ内で起動する)
       - name: Build English book
-        run: mdbook build docs/book
+        working-directory: docs/book
+        run: mdbook build
 
-      # 日本語版 book をビルドする
+      # 日本語版 book をビルドする(cmdrunの相対パスのためbookディレクトリ内で起動する)
       - name: Build Japanese book
-        run: mdbook build docs/book-ja
+        working-directory: docs/book-ja
+        run: mdbook build
 
       # 英語をルート、日本語を /ja に配置してサイトを組み立てる
       - name: Assemble site
