@@ -1,6 +1,5 @@
 [book]
 title = "type-dir"
-authors = ["Tact Yoshida"]
 language = "en"
 src = "src"
 
