@@ -1,0 +1,24 @@
+version: 0
+
+entry: root
+
+rules:
+  # one_of splice alternative with an id (exercises the Splice path of process_group_with_id).
+  # Coexists with the sibling .type-dir.yaml while the spliced rule produces entries with an id.
+  # Because only cfg.json exists, only alt_cfg realizes and one_of is satisfied.
+  - rule: root
+    ::
+      - file: .type-dir.yaml
+      - id: choice
+        one_of:
+        ::
+          - use: rule.cfg
+          - use: rule.toml
+  - rule: cfg
+    ::
+      - file: cfg.json
+        id: cfgfile
+  - rule: toml
+    ::
+      - file: cfg.toml
+        id: tomlfile

@@ -65,7 +65,7 @@ pub fn run_check(config_path: &Path, format: OutputFormat) -> Result<(), AppErro
         Some(parent) if !parent.as_os_str().is_empty() => parent,
         _ => Path::new("."),
     };
-    // FS traversal is performed via the DirTreeSource port (real FS implementation is in dir-lint-walk-impl).
+    // FS traversal is performed via the DirTreeSource port (real FS implementation is in type-dir-walk-impl).
     let tree = RealDirTreeSource
         .read(base, &config_expr.ignore)
         .map_err(CliError::Io)?;

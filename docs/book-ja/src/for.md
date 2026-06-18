@@ -13,7 +13,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/for/.dir-lint.yaml}}
+{{#include ../../../tutorials/for/.type-dir.yaml}}
 ```
 
 ## 解説

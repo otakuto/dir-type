@@ -11,7 +11,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/rule/.dir-lint.yaml}}
+{{#include ../../../tutorials/rule/.type-dir.yaml}}
 ```
 
 ## 解説

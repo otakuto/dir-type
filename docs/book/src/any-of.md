@@ -11,7 +11,7 @@ At least one of the entries listed under `any_of` must exist. Any combination is
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/any_of/.dir-lint.yaml}}
+{{#include ../../../tutorials/any_of/.type-dir.yaml}}
 ```
 
 This rule requires at least one of `thumbnail_32x32.txt`, `thumbnail_64x64.txt`, or `thumbnail_128x128.txt` to exist in the `assets/` directory.

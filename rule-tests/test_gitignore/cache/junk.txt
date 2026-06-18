@@ -1,1 +1,1 @@
-このファイルは .gitignore で無視されるため、dir-lint の走査に現れない。
+このファイルは .gitignore で無視されるため、type-dir の走査に現れない。

@@ -5,7 +5,7 @@ use crate::expr::ConfigExpr;
 use crate::runtime::{CheckReport, Checker};
 use crate::walk::DirTree;
 
-/// Checker implementation using the standard dir-lint engine.
+/// Checker implementation using the standard type-dir engine.
 pub struct DirLintChecker;
 
 impl Checker for DirLintChecker {

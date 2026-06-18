@@ -13,7 +13,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/file-regex/.dir-lint.yaml}}
+{{#include ../../../tutorials/file-regex/.type-dir.yaml}}
 ```
 
 このルールは `0.txt` / `1.txt` / `2.txt` のような `<数字>.txt` 形式のファイルを全て受理する。正規表現は Rust の `regex` クレートの構文に従う。

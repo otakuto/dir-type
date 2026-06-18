@@ -11,7 +11,7 @@ Just like `file:`, you can write a mapping after `dir:` and put a regular expres
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/dir-regex/.dir-lint.yaml}}
+{{#include ../../../tutorials/dir-regex/.type-dir.yaml}}
 ```
 
 This rule accepts any single-lowercase-letter directory such as `a/`, `b/`, and `c/`, and requires a file named `file` to exist inside each of them.

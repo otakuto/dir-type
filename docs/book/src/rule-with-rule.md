@@ -11,7 +11,7 @@ You can declare a rule-typed parameter using the form `type: rule.<rule-name>`. 
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/rule-with-rule/.dir-lint.yaml}}
+{{#include ../../../tutorials/rule-with-rule/.type-dir.yaml}}
 ```
 
 ## Explanation

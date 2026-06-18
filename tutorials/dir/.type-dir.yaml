@@ -1,0 +1,11 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .type-dir.yaml
+      - dir: src
+        ::
+          - file: main.txt

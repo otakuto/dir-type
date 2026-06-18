@@ -22,7 +22,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/group-clone/.dir-lint.yaml}}
+{{#include ../../../tutorials/group-clone/.type-dir.yaml}}
 ```
 
 ## 解説

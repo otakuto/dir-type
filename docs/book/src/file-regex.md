@@ -13,7 +13,7 @@ This accepts zero or more files matching the regular expression. It is useful as
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/file-regex/.dir-lint.yaml}}
+{{#include ../../../tutorials/file-regex/.type-dir.yaml}}
 ```
 
 This rule accepts any file matching the `<digit>.txt` pattern, such as `0.txt`, `1.txt`, and `2.txt`. The regular expression follows the syntax of Rust's `regex` crate.

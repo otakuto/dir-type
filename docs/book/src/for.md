@@ -13,7 +13,7 @@ Named regex captures (`(?<name>...)`) together with `id:` collect entries, and a
 ## Rule Definition
 
 ```yaml
-{{#include ../../../tutorials/for/.dir-lint.yaml}}
+{{#include ../../../tutorials/for/.type-dir.yaml}}
 ```
 
 ## Explanation

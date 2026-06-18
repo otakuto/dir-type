@@ -3,18 +3,18 @@
 ## `check` サブコマンド
 
 ```console
-$ dir-lint check [OPTIONS]
+$ type-dir check [OPTIONS]
 ```
 
 | オプション | 短縮形 | デフォルト | 説明 |
 |---|---|---|---|
-| `--config <PATH>` | `-c` | `.dir-lint.yaml` | 設定ファイルのパスを指定する |
+| `--config <PATH>` | `-c` | `.type-dir.yaml` | 設定ファイルのパスを指定する |
 | `--format <FORMAT>` | — | `human` | 出力形式。`human` または `json` を指定する |
 
-設定ファイルがカレントディレクトリの `.dir-lint.yaml` であれば、引数なしで実行できる。
+設定ファイルがカレントディレクトリの `.type-dir.yaml` であれば、引数なしで実行できる。
 
 ```console
-$ dir-lint check
+$ type-dir check
 ```
 
 検証が通ると何も表示されずに終了コード 0 で終わる。違反があると終了コード 1 で終わる。CI の `&&` チェーンや GitHub Actions の exit-code 判定でそのまま使える。
@@ -43,5 +43,5 @@ rules:
 `--format json` を指定すると、診断情報と検証したディレクトリの走査ログが JSON で stdout に出力される。CI パイプラインで機械的に処理したい場合に使う。
 
 ```console
-$ dir-lint check --format json
+$ type-dir check --format json
 ```

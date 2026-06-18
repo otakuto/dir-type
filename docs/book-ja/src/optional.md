@@ -13,7 +13,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/optional/.dir-lint.yaml}}
+{{#include ../../../tutorials/optional/.type-dir.yaml}}
 ```
 
 `extra.txt` には `optional: true` が付いているため、存在しなくてもエラーにならない。一方で `required.txt` には `optional:` がないため、存在しなければ `LT002 required name not found` が報告される。

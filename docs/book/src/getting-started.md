@@ -3,18 +3,18 @@
 ## The `check` subcommand
 
 ```console
-$ dir-lint check [OPTIONS]
+$ type-dir check [OPTIONS]
 ```
 
 | Option | Short | Default | Description |
 |---|---|---|---|
-| `--config <PATH>` | `-c` | `.dir-lint.yaml` | Path to the config file |
+| `--config <PATH>` | `-c` | `.type-dir.yaml` | Path to the config file |
 | `--format <FORMAT>` | — | `human` | Output format: `human` or `json` |
 
-When the config file is `.dir-lint.yaml` in the current directory, you can run without arguments.
+When the config file is `.type-dir.yaml` in the current directory, you can run without arguments.
 
 ```console
-$ dir-lint check
+$ type-dir check
 ```
 
 If validation passes, nothing is printed and the process exits with code 0. If there are violations, it exits with code 1. This makes it straightforward to use in CI `&&` chains or GitHub Actions exit-code checks.
@@ -43,5 +43,5 @@ As a YAML curiosity, `::` is simply a mapping entry whose key is `:`, with a val
 With `--format json`, diagnostic information and the traversal log of the validated directory are written to stdout as JSON. Use this when you need machine-readable output in a CI pipeline.
 
 ```console
-$ dir-lint check --format json
+$ type-dir check --format json
 ```

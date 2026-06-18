@@ -13,7 +13,7 @@ Specifying only `min` means "at least N," specifying only `max` means "at most N
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/count/.dir-lint.yaml}}
+{{#include ../../../tutorials/count/.type-dir.yaml}}
 ```
 
 This rule requires between 2 and 4 files matching the `<digit>.txt` pattern to exist inside the `shards/` directory.

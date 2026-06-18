@@ -2,10 +2,10 @@ use std::path::PathBuf;
 
 use assert_cmd::Command;
 
-/// Integration test that launches the `dir-lint` binary and verifies its exit code.
+/// Integration test that launches the `type-dir` binary and verifies its exit code.
 ///
 /// Recursively scans `tutorials/` and `rule-tests/` to auto-collect every directory
-/// that contains a `.dir-lint.yaml` as a fixture.
+/// that contains a `.type-dir.yaml` as a fixture.
 ///
 /// - Directories whose name ends with `-negative` or `_negative` → expect non-zero exit (error detected)
 /// - All others → expect zero exit (no errors)
@@ -38,12 +38,12 @@ fn all_fixtures_behave_as_expected() {
             .unwrap_or_default();
         let is_negative = dir_name.ends_with("-negative") || dir_name.ends_with("_negative");
 
-        let output = Command::cargo_bin("dir-lint")
-            .expect("dir-lint binary must be buildable")
+        let output = Command::cargo_bin("type-dir")
+            .expect("type-dir binary must be buildable")
             .current_dir(fixture)
             .arg("check")
             .output()
-            .expect("failed to run dir-lint");
+            .expect("failed to run type-dir");
 
         // Assert: verify that the exit code matches the expectation
         let succeeded = output.status.success();
@@ -71,9 +71,9 @@ fn all_fixtures_behave_as_expected() {
     );
 }
 
-/// Recursively scans `root` and appends every directory that contains `.dir-lint.yaml` to `out`.
+/// Recursively scans `root` and appends every directory that contains `.type-dir.yaml` to `out`.
 fn collect_fixtures(root: &PathBuf, out: &mut Vec<PathBuf>) {
-    let config_path = root.join(".dir-lint.yaml");
+    let config_path = root.join(".type-dir.yaml");
     if config_path.exists() {
         out.push(root.clone());
     }

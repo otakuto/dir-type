@@ -11,7 +11,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/recursive/.dir-lint.yaml}}
+{{#include ../../../tutorials/recursive/.type-dir.yaml}}
 ```
 
 ## 解説

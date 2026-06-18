@@ -13,7 +13,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/one_of/.dir-lint.yaml}}
+{{#include ../../../tutorials/one_of/.type-dir.yaml}}
 ```
 
 このルールは `a/` や `b/` のような各ディレクトリが `left.txt` か `right.txt` のどちらか一方だけを持つことを要求する。両方あってもエラー、どちらもなくてもエラーになる。

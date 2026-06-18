@@ -1,6 +1,6 @@
 use thiserror::Error;
 
-/// A rule-definition error found while validating the rules of a `.dir-lint.yaml` (the `compile`
+/// A rule-definition error found while validating the rules of a `.type-dir.yaml` (the `compile`
 /// pass). These mean "the rules themselves don't make sense", independent of any target directory.
 ///
 /// The `context_path()` method returns a structural path string (e.g. `"rules.foo.rules[2]"`) usable

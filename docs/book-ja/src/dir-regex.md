@@ -11,7 +11,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/dir-regex/.dir-lint.yaml}}
+{{#include ../../../tutorials/dir-regex/.type-dir.yaml}}
 ```
 
 このルールは `a/` / `b/` / `c/` のような 1 文字の小文字英字ディレクトリを全て受理し、それぞれの中に `file` という名前のファイルが存在することを要求する。

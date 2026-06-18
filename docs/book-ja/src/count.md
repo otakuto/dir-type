@@ -13,7 +13,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/count/.dir-lint.yaml}}
+{{#include ../../../tutorials/count/.type-dir.yaml}}
 ```
 
 このルールは `shards/` ディレクトリの中に `<数字>.txt` 形式のファイルが 2 個以上 4 個以下存在することを要求する。

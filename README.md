@@ -1,9 +1,9 @@
-# dir-lint
+# type-dir
 
 A linter that validates directory structure against declarative YAML rules.
 
-Source code has types; directory layout usually doesn't. `dir-lint` lets you
-declare the structure a project is supposed to have in a `.dir-lint.yaml` file
+Source code has types; directory layout usually doesn't. `type-dir` lets you
+declare the structure a project is supposed to have in a `.type-dir.yaml` file
 and checks the real directory tree against it, reporting any drift with
 compiler-style diagnostics. Think of it as a type checker for your file tree.
 
@@ -15,7 +15,7 @@ matching doc under `docs/` — `aaa.rs` requires `docs/aaa.md`, `bbb.rs` require
 
 ```text
 .
-├── .dir-lint.yaml
+├── .type-dir.yaml
 ├── docs
 │   ├── aaa.md
 │   ├── bbb.md
@@ -49,7 +49,7 @@ rules:
               value: ${dir.src.file.modules}
             ::
               - file: '${value.module.regex.name}.md'
-      - file: .dir-lint.yaml
+      - file: .type-dir.yaml
 ```
 
 `src/` collects every `<name>.rs` into `modules`, and `docs/` uses `for` to bind
@@ -59,8 +59,8 @@ each as `module` and require a `<name>.md` for it. Add `src/ccc.rs` and
 ## Installation
 
 ```console
-$ git clone https://github.com/otakuto/dir-lint.git
-$ cd dir-lint
+$ git clone https://github.com/otakuto/type-dir.git
+$ cd type-dir
 $ cargo install --path .
 ```
 

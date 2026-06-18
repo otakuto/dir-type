@@ -1,15 +1,15 @@
 # Installation
 
-Clone the repository and install directly from the `dir-lint-cli` crate.
+Clone the repository and install directly from the `type-dir-cli` crate.
 
 ```console
-$ git clone https://github.com/otakuto/dir-lint.git
-$ cd dir-lint
-$ cargo install --path dir-lint-cli
+$ git clone https://github.com/otakuto/type-dir.git
+$ cd type-dir
+$ cargo install --path type-dir-cli
 ```
 
-After installation, the `dir-lint` command is available.
+After installation, the `type-dir` command is available.
 
 ```console
-<!-- cmdrun dir-lint --help -->
+<!-- cmdrun type-dir --help -->
 ```

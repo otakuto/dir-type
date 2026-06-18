@@ -13,7 +13,7 @@ Without `optional:`, every `file:` and `dir:` entry is treated as required. Use 
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/optional/.dir-lint.yaml}}
+{{#include ../../../tutorials/optional/.type-dir.yaml}}
 ```
 
 Because `extra.txt` has `optional: true`, its absence does not cause an error. On the other hand, `required.txt` has no `optional:`, so if it is missing, `LT002 required name not found` is reported.

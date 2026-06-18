@@ -11,7 +11,7 @@ When the same file layout appears in multiple places, rewriting the same entries
 ## Rule Definition
 
 ```yaml
-{{#include ../../../tutorials/rule/.dir-lint.yaml}}
+{{#include ../../../tutorials/rule/.type-dir.yaml}}
 ```
 
 ## Explanation

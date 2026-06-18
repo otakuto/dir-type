@@ -1,0 +1,16 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .type-dir.yaml
+      # Each [a-z] directory must contain exactly one of left.txt or right.txt (one_of).
+      - dir:
+          regex: '^[a-z]$'
+        ::
+          - one_of:
+            ::
+              - file: left.txt
+              - file: right.txt

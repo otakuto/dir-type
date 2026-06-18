@@ -6,7 +6,7 @@ use crate::error::runtime_error::RuntimeError;
 use crate::error::semantic_error::SemanticError;
 use crate::error::syntax_error::SyntaxError;
 
-/// Top-level error for the whole dir-lint pipeline — the umbrella over every layer.
+/// Top-level error for the whole type-dir pipeline — the umbrella over every layer.
 ///
 /// Single-failure layers (`Syntax`/`Runtime`/`Cli`) convert in via `#[from]`. The batch layers
 /// (`Semantic` rule errors from `compile`, `Lint` structure findings from `check`) carry a `Vec`

@@ -11,7 +11,7 @@
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/choice/.dir-lint.yaml}}
+{{#include ../../../tutorials/choice/.type-dir.yaml}}
 ```
 
 This rule requires between 1 and 2 of `guide.md`, `api.md`, and `faq.md` to exist in the `docs/` directory.

@@ -32,7 +32,7 @@ impl std::fmt::Display for ParseError {
     }
 }
 
-/// A failure to read or parse the `.dir-lint.yaml` source itself (the lex/parse layer).
+/// A failure to read or parse the `.type-dir.yaml` source itself (the lex/parse layer).
 ///
 /// Covers I/O while reading the config file and YAML deserialization failures (serde_yaml /
 /// marked-yaml). The underlying YAML errors are kept as their rendered message string so that

@@ -1,0 +1,9 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .type-dir.yaml
+      - file: required-but-missing.txt

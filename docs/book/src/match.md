@@ -11,7 +11,7 @@ Sometimes you want to require different documentation depending on whether a col
 ## Rule Definition
 
 ```yaml
-{{#include ../../../tutorials/match/.dir-lint.yaml}}
+{{#include ../../../tutorials/match/.type-dir.yaml}}
 ```
 
 ## Explanation

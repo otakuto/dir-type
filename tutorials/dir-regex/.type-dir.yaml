@@ -1,0 +1,13 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .type-dir.yaml
+      # regex dir entry: accepts all matching directories (a / b / c) and requires each to contain a file.
+      - dir:
+          regex: '^[a-z]$'
+        ::
+          - file: file

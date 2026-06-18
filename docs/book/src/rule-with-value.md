@@ -11,7 +11,7 @@ Rules can accept value parameters. On the declaration side, parameters are decla
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/rule-with-value/.dir-lint.yaml}}
+{{#include ../../../tutorials/rule-with-value/.type-dir.yaml}}
 ```
 
 ## Explanation
