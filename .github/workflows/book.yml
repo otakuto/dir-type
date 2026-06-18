@@ -32,9 +32,10 @@ jobs:
         run: cargo install --path .
 
       # mdbook と mdbook-cmdrun をプレビルドバイナリで導入する
+      # mdbook 0.5.x は mdbook-cmdrun と RenderContext 形式が非互換のため 0.4.x に固定する
       - uses: taiki-e/install-action@v2
         with:
-          tool: mdbook,mdbook-cmdrun
+          tool: mdbook@0.4.52,mdbook-cmdrun
 
       # 英語版 book をビルドする
       - name: Build English book
