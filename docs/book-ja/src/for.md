@@ -1,4 +1,4 @@
-# `for` — コレクションをイテレートする
+# `for` によるコレクションの反復
 
 「`items/` にあるサブディレクトリと同名のディレクトリが `mirror/` にも存在すること」のような、動的な対称性の検証が必要になる場面がある。そのときは `for` を使う。
 
@@ -36,9 +36,9 @@
         - file: copy.txt
 ```
 
-- `id: it` — 各イテレーションでの変数名を指定する
-- `value: ${dir.items_dir.dir.item}` — `id: items_dir` を持つ `items` ディレクトリの中の `item` コレクションをイテレートする
-- `${value.it.regex.name}` — 現在の要素 `it` の名前付きキャプチャ `name` を参照する
+- `id: it`: 各イテレーションでの変数名を指定する
+- `value: ${dir.items_dir.dir.item}`: `id: items_dir` を持つ `items` ディレクトリの中の `item` コレクションをイテレートする
+- `${value.it.regex.name}`: 現在の要素 `it` の名前付きキャプチャ `name` を参照する
 
 ### `${...}` 展開
 

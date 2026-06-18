@@ -1,6 +1,6 @@
-# `recursive-clone` — 再帰ツリーを別の場所にミラーする
+# `recursive-clone` による再帰ツリーのミラー
 
-再帰ルールで収集した `feature/` 配下のツリーを、`tests/` 側にそっくり写し取る例である。各ディレクトリ名には `-test` を付け、`project.txt` を持つノードには対応する `project.test.txt` を要求する。ネストがどれだけ深くても、ソースと同じ階層構造のテストツリーを強制できる。テストの置き場所がソースとずれる問題を、構造ごと防げる。
+再帰ルールで収集した `feature/` 配下のツリーを、`tests/` 側にそっくり写し取る例である。各ディレクトリ名には `-test` を付け、`project.txt` を持つノードには対応する `project.test.txt` を要求する。ネストがどれだけ深くても、ソースと同じ階層構造のテストツリーを強制できる。
 
 ## ディレクトリ構成
 
@@ -18,11 +18,11 @@
 
 ### `feature_dir` ルールで再帰収集する
 
-`feature_dir` ルールは `015_recursive` と同じ自己再帰パターンである。ただし収集に使う `id:` を詳細に付けている。
+`feature_dir` ルールは前章と同じ自己再帰パターンである。ただし収集に使う `id:` を詳細に付けている。
 
-- `id: feature_name` — 各フィーチャーディレクトリ自体を収集する（キャプチャ `stem` に名前を束縛）
-- `id: project` — `project.txt` を収集する
-- `id: subfeatures` — 子の `feature/` ディレクトリを収集する
+- `id: feature_name`: 各フィーチャーディレクトリ自体を収集する（キャプチャ `stem` に名前を束縛）
+- `id: project`: `project.txt` を収集する
+- `id: subfeatures`: 子の `feature/` ディレクトリを収集する
 
 `use: rule.feature_dir` した結果を `id: feature` で束ねると、`${use.feature.dir.feature_name}` で収集したフィーチャーディレクトリのリストを参照できる。
 
@@ -59,9 +59,9 @@
                           value: ${value.nested_feature}
 ```
 
-- `${with.feature.regex.stem}-test` — 渡されたフィーチャーの stem に `-test` を付けたディレクトリ名を要求する
-- `${with.feature.file.project}` — `project.txt` が存在するとき `for` がイテレートし `project.test.txt` を要求する
-- `${with.feature.dir.subfeatures}` — 子の `feature/` が存在するとき、再帰的に `test_feature` を適用する
+- `${with.feature.regex.stem}-test`: 渡されたフィーチャーの stem に `-test` を付けたディレクトリ名を要求する
+- `${with.feature.file.project}`: `project.txt` が存在するとき `for` がイテレートし `project.test.txt` を要求する
+- `${with.feature.dir.subfeatures}`: 子の `feature/` が存在するとき、再帰的に `test_feature` を適用する
 
 ### 再帰の収束
 
