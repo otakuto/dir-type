@@ -40,4 +40,3 @@ name = "mdbook build"
 entry = "bash -c '(cd docs/book-ja && mdbook build) && (cd docs/book && mdbook build)'"
 language = "system"
 pass_filenames = false
-files = '^(docs/|tutorials/)'
