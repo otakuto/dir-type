@@ -11,7 +11,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/dir/.type-dir.yaml}}
+{{#include ../../../tutorials/dir/.dir-type.yaml}}
 ```
 
 このルールは、`src/` ディレクトリが存在し、その中に `main.txt` が存在することを要求する。`dir:` の直後に `::` を置くことで、そのディレクトリ配下の構造をインラインで記述できる。

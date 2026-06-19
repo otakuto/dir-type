@@ -28,9 +28,9 @@ types = ["rust"]
 pass_filenames = false
 
 [[repos.hooks]]
-id = "type-dir"
-name = "type-dir self check"
-entry = "cargo run --bin type-dir -- check"
+id = "dir-type"
+name = "dir-type self check"
+entry = "cargo run --bin dir-type -- check"
 language = "system"
 pass_filenames = false
 

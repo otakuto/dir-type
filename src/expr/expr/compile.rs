@@ -18,7 +18,7 @@ use crate::yaml::{RuleName, YamlConfig, YamlRule};
 
 /// Compiles a validated `YamlConfig` into a `ConfigExpr`.
 ///
-/// `ConfigExpr` is defined in a separate crate (type-dir-config), so implementing `TryFrom`
+/// `ConfigExpr` is defined in a separate crate (dir-type-config), so implementing `TryFrom`
 /// directly would cause a coherence violation; this is provided as a free function instead.
 /// Validation errors are returned as `ConfigErrors` (a collection of `SemanticError`).
 pub fn compile(yaml: YamlConfig) -> Result<ConfigExpr, ConfigErrors> {

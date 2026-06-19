@@ -11,7 +11,7 @@ This example takes a nested tree under `rec/` and rearranges it into a flat layo
 ## Rule Definition
 
 ```yaml
-{{#include ../../../tutorials/recursive-flatten/.type-dir.yaml}}
+{{#include ../../../tutorials/recursive-flatten/.dir-type.yaml}}
 ```
 
 ## Explanation

@@ -44,16 +44,16 @@ Every new team member has to be told verbally, reviewers catch violations one by
 
 We tend to picture a directory structure as a single tree branching from a root. But the moment you assign types to multiple trees and bundle them together, the result is no longer one tree — it is a list of trees, a *forest*.
 
-The foundational concept behind type-dir is that forest. Rather than validating a single tree, type-dir treats a *collection* of trees as the typed unit.
+The foundational concept behind dir-type is that forest. Rather than validating a single tree, dir-type treats a *collection* of trees as the typed unit.
 
 ---
 
-## What is type-dir?
+## What is dir-type?
 
 In one sentence: a tool for linting directory structure.
 
-`type-dir` is a CLI tool written in Rust. It reads a YAML rule file and validates an actual directory tree against it, reporting any discrepancy as a diagnostic message. It never looks inside files — it focuses exclusively on **structure**.
+`dir-type` is a CLI tool written in Rust. It reads a YAML rule file and validates an actual directory tree against it, reporting any discrepancy as a diagnostic message. It never looks inside files — it focuses exclusively on **structure**.
 
-By analogy with a type system, `.type-dir.yaml` is the "type definition file" for your directory structure. `type-dir check` runs the type check and reports errors with error codes and line numbers when something does not match.
+By analogy with a type system, `.dir-type.yaml` is the "type definition file" for your directory structure. `dir-type check` runs the type check and reports errors with error codes and line numbers when something does not match.
 
-The essential value of type-dir is that it lets you turn directory-structure conventions — previously buried in a corner of CONTRIBUTING.md, an old Slack thread, or someone's memory — into **an executable specification written in `.type-dir.yaml`**. Tacit knowledge becomes a versioned type definition that anyone can read and verify.
+The essential value of dir-type is that it lets you turn directory-structure conventions — previously buried in a corner of CONTRIBUTING.md, an old Slack thread, or someone's memory — into **an executable specification written in `.dir-type.yaml`**. Tacit knowledge becomes a versioned type definition that anyone can read and verify.

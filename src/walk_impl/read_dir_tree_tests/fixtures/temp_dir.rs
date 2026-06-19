@@ -9,7 +9,7 @@ pub struct TempDir {
 impl TempDir {
     pub fn new(label: &str) -> TempDir {
         // Create a unique name using the process ID and label.
-        let unique = format!("type-dir-fs-walk-{}-{}", std::process::id(), label);
+        let unique = format!("dir-type-fs-walk-{}-{}", std::process::id(), label);
         let path = std::env::temp_dir().join(unique);
         // Remove any existing directory, then recreate it.
         let _ = fs::remove_dir_all(&path);

@@ -13,7 +13,7 @@ Having both present, or neither present, is an error.
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/one_of/.type-dir.yaml}}
+{{#include ../../../tutorials/one_of/.dir-type.yaml}}
 ```
 
 This rule requires each directory such as `a/` or `b/` to contain exactly one of `left.txt` or `right.txt`. Having both is an error; having neither is also an error.

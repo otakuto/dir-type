@@ -1,9 +1,9 @@
-# type-dir
+# dir-type
 
 A linter that validates directory structure against declarative YAML rules.
 
-Source code has types; directory layout usually doesn't. `type-dir` lets you
-declare the structure a project is supposed to have in a `.type-dir.yaml` file
+Source code has types; directory layout usually doesn't. `dir-type` lets you
+declare the structure a project is supposed to have in a `.dir-type.yaml` file
 and checks the real directory tree against it, reporting any drift with
 compiler-style diagnostics. Think of it as a type checker for your file tree.
 
@@ -15,7 +15,7 @@ matching doc under `docs/` — `aaa.rs` requires `docs/aaa.md`, `bbb.rs` require
 
 ```text
 .
-├── .type-dir.yaml
+├── .dir-type.yaml
 ├── docs
 │   ├── aaa.md
 │   ├── bbb.md
@@ -49,7 +49,7 @@ rules:
               value: ${dir.src.file.modules}
             ::
               - file: '${value.module.regex.name}.md'
-      - file: .type-dir.yaml
+      - file: .dir-type.yaml
 ```
 
 `src/` collects every `<name>.rs` into `modules`, and `docs/` uses `for` to bind
@@ -59,8 +59,8 @@ each as `module` and require a `<name>.md` for it. Add `src/ccc.rs` and
 ## Installation
 
 ```console
-$ git clone https://github.com/otakuto/type-dir.git
-$ cd type-dir
+$ git clone https://github.com/otakuto/dir-type.git
+$ cd dir-type
 $ cargo install --path .
 ```
 

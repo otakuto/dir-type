@@ -11,7 +11,7 @@ A `dir` entry requires that a directory with the specified name exists. By nesti
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/dir/.type-dir.yaml}}
+{{#include ../../../tutorials/dir/.dir-type.yaml}}
 ```
 
 This rule requires the `src/` directory to exist and `main.txt` to exist inside it. Placing `::` immediately after `dir:` lets you describe the structure of that directory inline.

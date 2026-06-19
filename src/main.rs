@@ -15,7 +15,7 @@ use std::path::PathBuf;
 
 #[derive(Parser)]
 #[command(
-    name = "type-dir",
+    name = "dir-type",
     about = "A linter that validates directory structure against YAML rules"
 )]
 #[command(args_conflicts_with_subcommands = true)]
@@ -31,7 +31,7 @@ struct Cli {
 #[derive(Args)]
 struct CheckArgs {
     /// Path to the config file.
-    #[arg(short, long, default_value = ".type-dir.yaml")]
+    #[arg(short, long, default_value = ".dir-type.yaml")]
     config: PathBuf,
     /// Output format (human: stderr diagnostics, json: stdout JSON).
     #[arg(long, value_enum, default_value_t = FormatArg::Human)]

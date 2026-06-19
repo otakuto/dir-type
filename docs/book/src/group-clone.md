@@ -22,7 +22,7 @@ The orphans `b_left.txt` and `d_right.txt` are allowed to exist under `bundle/` 
 ## Rule Definition
 
 ```yaml
-{{#include ../../../tutorials/group-clone/.type-dir.yaml}}
+{{#include ../../../tutorials/group-clone/.dir-type.yaml}}
 ```
 
 ## Explanation

@@ -11,7 +11,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/recursive-flatten/.type-dir.yaml}}
+{{#include ../../../tutorials/recursive-flatten/.dir-type.yaml}}
 ```
 
 ## 解説

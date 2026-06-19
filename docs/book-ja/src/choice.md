@@ -11,7 +11,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/choice/.type-dir.yaml}}
+{{#include ../../../tutorials/choice/.dir-type.yaml}}
 ```
 
 このルールは `docs/` ディレクトリに `guide.md` / `api.md` / `faq.md` のうち 1 個以上 2 個以下が存在することを要求する。

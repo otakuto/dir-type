@@ -1,15 +1,15 @@
 # インストール
 
-リポジトリをクローンし、`type-dir-cli` クレートから直接インストールする。
+リポジトリをクローンし、`dir-type-cli` クレートから直接インストールする。
 
 ```console
-$ git clone https://github.com/otakuto/type-dir.git
-$ cd type-dir
-$ cargo install --path type-dir-cli
+$ git clone https://github.com/otakuto/dir-type.git
+$ cd dir-type
+$ cargo install --path dir-type-cli
 ```
 
-インストール後、`type-dir` コマンドが使えるようになる。
+インストール後、`dir-type` コマンドが使えるようになる。
 
 ```console
-<!-- cmdrun type-dir --help -->
+<!-- cmdrun dir-type --help -->
 ```

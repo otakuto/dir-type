@@ -11,7 +11,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/match/.type-dir.yaml}}
+{{#include ../../../tutorials/match/.dir-type.yaml}}
 ```
 
 ## 解説

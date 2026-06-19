@@ -11,7 +11,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/any_of/.type-dir.yaml}}
+{{#include ../../../tutorials/any_of/.dir-type.yaml}}
 ```
 
 このルールは `assets/` ディレクトリに `thumbnail_32x32.txt` / `thumbnail_64x64.txt` / `thumbnail_128x128.txt` のうち 1 個以上が存在することを要求する。

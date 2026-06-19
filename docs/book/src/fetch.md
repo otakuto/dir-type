@@ -13,7 +13,7 @@ Ordinary entries "consume" paths inside a directory. Once consumed, a path canno
 ## Rule Definition
 
 ```yaml
-{{#include ../../../tutorials/fetch/.type-dir.yaml}}
+{{#include ../../../tutorials/fetch/.dir-type.yaml}}
 ```
 
 ## Explanation

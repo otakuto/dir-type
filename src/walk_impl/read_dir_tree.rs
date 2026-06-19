@@ -37,7 +37,7 @@ pub fn read_dir_tree(
     builder
         // Enable .gitignore / global gitignore / .git/info/exclude / parent gitignore.
         .standard_filters(true)
-        // Do not exclude dotfiles (keep .type-dir.yaml and .github/ in the lint target set).
+        // Do not exclude dotfiles (keep .dir-type.yaml and .github/ in the lint target set).
         .hidden(false)
         // Apply .gitignore even outside a git repository (test fixtures run in temp directories).
         .require_git(false)

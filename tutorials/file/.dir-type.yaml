@@ -1,0 +1,9 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .dir-type.yaml
+      - file: required.txt

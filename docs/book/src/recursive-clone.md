@@ -11,7 +11,7 @@ This example takes the tree collected under `feature/` by a recursive rule and r
 ## Rule Definition
 
 ```yaml
-{{#include ../../../tutorials/recursive-clone/.type-dir.yaml}}
+{{#include ../../../tutorials/recursive-clone/.dir-type.yaml}}
 ```
 
 ## Explanation

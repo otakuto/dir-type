@@ -11,7 +11,7 @@ Using `use.<id>` as a hop, you can descend directly into a splice result bundled
 ## Rule definition
 
 ```yaml
-{{#include ../../../tutorials/rule-with-rule/.type-dir.yaml}}
+{{#include ../../../tutorials/rule-with-rule/.dir-type.yaml}}
 ```
 
 ## Explanation

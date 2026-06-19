@@ -11,7 +11,7 @@ By using `use: rule.<name>` to make a rule reference itself, you can express arb
 ## Rule Definition
 
 ```yaml
-{{#include ../../../tutorials/recursive/.type-dir.yaml}}
+{{#include ../../../tutorials/recursive/.dir-type.yaml}}
 ```
 
 ## Explanation

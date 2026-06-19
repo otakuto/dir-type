@@ -1,5 +1,5 @@
 [package]
-name = "type-dir"
+name = "dir-type"
 edition = "2024"
 rust-version = "1.85"
 version = "0.1.0"
@@ -7,10 +7,10 @@ publish = true
 
 license = "MIT"
 authors = ["Tact Yoshida"]
-repository = "https://github.com/otakuto/type-dir"
+repository = "https://github.com/otakuto/dir-type"
 
 [[bin]]
-name = "type-dir"
+name = "dir-type"
 path = "src/main.rs"
 
 [dependencies]

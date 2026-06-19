@@ -1,0 +1,11 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .dir-type.yaml
+      # regex file entry: accepts all matching files (0.txt / 1.txt / 2.txt).
+      - file:
+          regex: '^[0-9]\.txt$'

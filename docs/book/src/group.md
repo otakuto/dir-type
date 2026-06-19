@@ -11,7 +11,7 @@ An entry with a `group:` marker key â€” and no `dir:`, `file:`, or `rule:` key â
 ## Rule Definition
 
 ```yaml
-{{#include ../../../tutorials/group/.type-dir.yaml}}
+{{#include ../../../tutorials/group/.dir-type.yaml}}
 ```
 
 ## Explanation

@@ -1,0 +1,18 @@
+version: 0
+
+entry: root
+
+rules:
+  - rule: root
+    ::
+      - file: .dir-type.yaml
+      - dir: pkg
+        ::
+          # `use: rule.<name>` entry = splice. Expands the manifest rules inline at this position.
+          - use: rule.manifest
+
+  # manifest defines a shared rule set that requires name.txt and version.txt.
+  - rule: manifest
+    ::
+      - file: name.txt
+      - file: version.txt

@@ -11,7 +11,7 @@
 ## ルール定義
 
 ```yaml
-{{#include ../../../tutorials/recursive/.type-dir.yaml}}
+{{#include ../../../tutorials/recursive/.dir-type.yaml}}
 ```
 
 ## 解説

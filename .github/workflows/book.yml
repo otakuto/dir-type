@@ -27,8 +27,8 @@ jobs:
       - name: Install tree
         run: sudo apt-get update && sudo apt-get install -y tree
 
-      # type-dir バイナリをビルドしてインストールする
-      - name: Install type-dir
+      # dir-type バイナリをビルドしてインストールする
+      - name: Install dir-type
         run: cargo install --path .
 
       # mdbook と mdbook-cmdrun をプレビルドバイナリで導入する

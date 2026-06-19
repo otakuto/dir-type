@@ -1,0 +1,18 @@
+version: 0
+
+entry: root
+
+rules:
+  # Negative case: the inner one_of contains both a.txt and b.txt, causing a cardinality violation (2 > 1) and failing to realize.
+  # The sibling c.txt also does not exist, so the outer one_of realize count is 0, a.txt/b.txt become undeclared,
+  # and the check exits non-zero (verifies that nested groups detect violations correctly without panicking).
+  - rule: root
+    ::
+      - file: .dir-type.yaml
+      - one_of:
+        ::
+          - one_of:
+            ::
+              - file: a.txt
+              - file: b.txt
+          - file: c.txt

@@ -1,0 +1,24 @@
+version: 0
+
+entry: root
+
+rules:
+  # any_of splice alternative. Even when the splice target is a block with multiple nodes requiring dirs,
+  # it coexists with the sibling .dir-type.yaml and realizes. Because src/ exists, any_of (1 or more) is satisfied.
+  - rule: root
+    ::
+      - file: .dir-type.yaml
+      - any_of:
+        ::
+          - use: rule.with_src
+          - use: rule.with_docs
+  - rule: with_src
+    ::
+      - dir: src
+        ::
+          - file: main.rs
+  - rule: with_docs
+    ::
+      - dir: docs
+        ::
+          - file: index.md
