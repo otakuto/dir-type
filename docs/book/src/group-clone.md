@@ -7,7 +7,7 @@ In this example, only the stems for which both `<stem>_left.txt` and `<stem>_rig
 ## Directory Layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/group-clone --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/group-clone --noreport -->
 ```
 
 The state of each stem under `bundle/` is as follows.

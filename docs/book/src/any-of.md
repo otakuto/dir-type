@@ -5,7 +5,7 @@ At least one of the entries listed under `any_of` must exist. Any combination is
 ## Directory layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/any_of --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/any_of --noreport -->
 ```
 
 ## Rule definition

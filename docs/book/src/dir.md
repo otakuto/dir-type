@@ -5,7 +5,7 @@ A `dir` entry requires that a directory with the specified name exists. By nesti
 ## Directory layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/dir --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/dir --noreport -->
 ```
 
 ## Rule definition

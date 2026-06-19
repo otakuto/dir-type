@@ -7,7 +7,7 @@ This accepts zero or more files matching the regular expression. It is useful as
 ## Directory layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/file-regex --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/file-regex --noreport -->
 ```
 
 ## Rule definition

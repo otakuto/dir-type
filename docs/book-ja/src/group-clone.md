@@ -7,7 +7,7 @@
 ## ディレクトリ構成
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/group-clone --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/group-clone --noreport -->
 ```
 
 `bundle/` の各 stem の状態は次のとおりである。

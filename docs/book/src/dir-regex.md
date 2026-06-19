@@ -5,7 +5,7 @@ Just like `file:`, you can write a mapping after `dir:` and put a regular expres
 ## Directory layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/dir-regex --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/dir-regex --noreport -->
 ```
 
 ## Rule definition

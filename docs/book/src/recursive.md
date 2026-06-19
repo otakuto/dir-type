@@ -5,7 +5,7 @@ By using `use: rule.<name>` to make a rule reference itself, you can express arb
 ## Directory Layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/recursive --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/recursive --noreport -->
 ```
 
 ## Rule Definition

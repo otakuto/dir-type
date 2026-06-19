@@ -7,7 +7,7 @@ The config file itself (`.dir-type.yaml`) is treated as an undeclared path unles
 ## Directory layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/file --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/file --noreport -->
 ```
 
 ## Rule definition

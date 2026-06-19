@@ -5,7 +5,7 @@
 ## ディレクトリ構成
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/recursive-clone --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/recursive-clone --noreport -->
 ```
 
 ## ルール定義

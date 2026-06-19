@@ -5,7 +5,7 @@ This example takes the tree collected under `feature/` by a recursive rule and r
 ## Directory Layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/recursive-clone --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/recursive-clone --noreport -->
 ```
 
 ## Rule Definition

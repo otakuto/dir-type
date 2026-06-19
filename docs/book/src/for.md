@@ -7,7 +7,7 @@ Named regex captures (`(?<name>...)`) together with `id:` collect entries, and a
 ## Directory Layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/for --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/for --noreport -->
 ```
 
 ## Rule Definition

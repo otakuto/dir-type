@@ -5,7 +5,7 @@ An entry with a `group:` marker key â€” and no `dir:`, `file:`, or `rule:` key â
 ## Directory Layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/group --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/group --noreport -->
 ```
 
 ## Rule Definition

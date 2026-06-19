@@ -5,7 +5,7 @@
 ## Directory layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/choice --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/choice --noreport -->
 ```
 
 ## Rule definition

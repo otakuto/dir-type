@@ -7,7 +7,7 @@
 ## ディレクトリ構成
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/file --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/file --noreport -->
 ```
 
 ## ルール定義

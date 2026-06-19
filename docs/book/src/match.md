@@ -5,7 +5,7 @@ Sometimes you want to require different documentation depending on whether a col
 ## Directory Layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/match --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/match --noreport -->
 ```
 
 ## Rule Definition

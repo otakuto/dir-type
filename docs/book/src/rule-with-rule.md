@@ -5,7 +5,7 @@ Using `use.<id>` as a hop, you can descend directly into a splice result bundled
 ## Directory structure
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/rule-with-rule --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/rule-with-rule --noreport -->
 ```
 
 ## Rule definition

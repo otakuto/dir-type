@@ -7,7 +7,7 @@ Ordinary entries "consume" paths inside a directory. Once consumed, a path canno
 ## Directory Layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/fetch --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/fetch --noreport -->
 ```
 
 ## Rule Definition

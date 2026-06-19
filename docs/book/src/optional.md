@@ -7,7 +7,7 @@ Without `optional:`, every `file:` and `dir:` entry is treated as required. Use 
 ## Directory layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/optional --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/optional --noreport -->
 ```
 
 ## Rule definition

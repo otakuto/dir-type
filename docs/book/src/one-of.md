@@ -7,7 +7,7 @@ Having both present, or neither present, is an error.
 ## Directory layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/one_of --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/one_of --noreport -->
 ```
 
 ## Rule definition

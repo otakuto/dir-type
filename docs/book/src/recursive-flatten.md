@@ -5,7 +5,7 @@ This example takes a nested tree under `rec/` and rearranges it into a flat layo
 ## Directory Layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/recursive-flatten --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/recursive-flatten --noreport -->
 ```
 
 ## Rule Definition

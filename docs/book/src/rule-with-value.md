@@ -5,7 +5,7 @@ Rules can accept value parameters. On the declaration side, parameters are decla
 ## Directory structure
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/rule-with-value --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/rule-with-value --noreport -->
 ```
 
 ## Rule definition

@@ -5,7 +5,7 @@ When the same file layout appears in multiple places, rewriting the same entries
 ## Directory Layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/rule --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/rule --noreport -->
 ```
 
 ## Rule Definition

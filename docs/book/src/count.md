@@ -7,7 +7,7 @@ Specifying only `min` means "at least N," specifying only `max` means "at most N
 ## Directory layout
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/count --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/count --noreport -->
 ```
 
 ## Rule definition

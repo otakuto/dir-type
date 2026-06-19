@@ -5,7 +5,7 @@
 ## ディレクトリ構成
 
 ```text
-<!-- cmdrun cd ../../../ && tree tutorials/any_of --noreport -->
+<!-- cmdrun cd ../../../ && tree -a tutorials/any_of --noreport -->
 ```
 
 ## ルール定義
