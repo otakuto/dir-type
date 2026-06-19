@@ -1,10 +1,5 @@
 version: 0
 entry: root
-
-# Example of using use. as a hop to navigate into splice results.
-# The for loop iterates over ${dir.components_root.use.component} — the splice
-# result of rule.component bound under id: component inside components_root.
-# Each element (a rule.component record) is passed to rule.docs as a single record.
 rules:
   - rule: root
     ::

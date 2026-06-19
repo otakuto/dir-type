@@ -79,6 +79,9 @@ pub enum Hop {
     For(String),
     /// `.fetch.<id>` — a child record set produced by a `fetch` entry carrying that id.
     Fetch(String),
+    /// `.use.<id>` — a child record set introduced by a `use: rule.X id: <id>` entry.
+    /// Navigates into the splice result identified by `<id>` within the current id shape.
+    Use(String),
     /// Unqualified single field `.foo`. This variant is kept for internal recognition so that
     /// `check_rule_var_scope` can reject it with `UnqualifiedReference` (E023). New code must
     /// never produce `Hop::Field` references; only already-invalid inputs parse into it
@@ -279,6 +282,11 @@ fn parse_hops(segments: &[&str]) -> Vec<Hop> {
             "fetch" => {
                 let id = segments.get(idx + 1).copied().unwrap_or("").to_string();
                 hops.push(Hop::Fetch(id));
+                idx += 2;
+            }
+            "use" => {
+                let id = segments.get(idx + 1).copied().unwrap_or("").to_string();
+                hops.push(Hop::Use(id));
                 idx += 2;
             }
             other => {

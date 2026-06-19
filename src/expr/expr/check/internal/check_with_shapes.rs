@@ -8,7 +8,9 @@ use indexmap::IndexMap;
 
 use super::check_rule_var_scope::collect_self_owned_ids;
 use super::id_shape::{ChildRef, IdShape, NodeKind};
-use super::id_shape_derive::{derive_rule_id_shape, resolve_rule_path_shape};
+use super::id_shape_derive::{
+    collect_id_shapes_guarded, derive_rule_id_shape, resolve_rule_path_shape,
+};
 use super::pattern_util::{named_captures, pattern_str};
 use crate::error::SemanticError;
 use crate::expr::template_ref::extract_refs;
@@ -61,10 +63,16 @@ pub fn check_with_shapes(
         }
 
         // Add self-owned ids to the environment.
+        // Build a per-rule id-shape map so that same-named ids in different rules do not
+        // shadow each other (id names are scoped to the rule that declares them).
+        let mut rule_id_shapes: IndexMap<String, IdShape> = IndexMap::new();
+        for entry in &rule.body {
+            collect_id_shapes_guarded(entry, rules, &mut HashSet::new(), &mut rule_id_shapes);
+        }
         let mut self_owned: HashSet<String> = HashSet::new();
         collect_self_owned_ids(&rule.body, &mut self_owned);
         for id_name in &self_owned {
-            if let Some(id_shape) = id_shapes.get(id_name) {
+            if let Some(id_shape) = rule_id_shapes.get(id_name) {
                 env.insert(
                     id_name.clone(),
                     ShapeEntry {
@@ -549,6 +557,17 @@ fn step_id_shape(
                 Some(Shape::FreeForm)
             }
         }
+        Hop::Use(id) => {
+            // Navigate into a splice+id child: same membership check as Dir/File but
+            // without kind enforcement (Use entries introduce a group-wrapper shape).
+            if let Some(child_ref) = id_shape.child_ids.get(id.as_str()) {
+                Some(child_ref_to_shape(child_ref, rules))
+            } else {
+                // The child may be produced by a splice+id entry whose id may not appear in
+                // the statically derived child_ids; remain lenient (no false positive).
+                Some(Shape::FreeForm)
+            }
+        }
     }
 }
 
@@ -692,6 +711,7 @@ fn hop_display(hop: &Hop) -> String {
         Hop::Group(id) => format!("group.{id}"),
         Hop::For(id) => format!("for.{id}"),
         Hop::Fetch(id) => format!("fetch.{id}"),
+        Hop::Use(id) => format!("use.{id}"),
         Hop::Field(f) => f.clone(),
     }
 }

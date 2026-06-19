@@ -1,0 +1,13 @@
+version: 0
+
+entry: root
+
+# Negative case: the same id name `item` appears twice within the same rule.
+# This must produce SM002 (duplicate id) because ids must be unique within a rule scope.
+rules:
+  - rule: root
+    ::
+      - file: x.txt
+        id: item
+      - file: y.txt
+        id: item

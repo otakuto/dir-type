@@ -137,8 +137,11 @@ pub fn head_value(scope: &Scope, ref_kind: RefKind, id: &str) -> Option<Value> {
 /// The first segment is the head's `(kind, id)`. Each tail hop is mapped to a `NodePathElement`:
 /// producer hops (Dir/File/Choice/Group/For/Fetch) become kind-blind segments that traverse children
 /// by id key (represented by `NodeKind::Dir`); `Regex(g)` becomes a terminal field-projection segment
-/// (`NodeKind::Regex`). `Bare` heads and `Hop::Field` cannot be expressed as a `NodePath` (callers
-/// handle them via transparent get / existing paths), so `None` is returned.
+/// (`NodeKind::Regex`). `Bare` heads, `Hop::Field`, and `Hop::Use` cannot be expressed as a `NodePath`
+/// (callers handle them via the conventional `head_records` + `resolve_chain` path), so `None` is
+/// returned. `Hop::Use` requires auto-unwrap through a splice group wrapper which `scope.resolve` cannot
+/// perform (it converts all non-Regex tail segments to `Hop::Dir`), so paths containing `Hop::Use` fall
+/// back to `resolve_chain` where the auto-unwrap semantics are implemented.
 pub fn node_path_from_ref(ref_kind: RefKind, id: &str, hops: &[Hop]) -> Option<NodePath> {
     let RefKind::Qualified(kind) = ref_kind else {
         return None;
@@ -153,6 +156,8 @@ pub fn node_path_from_ref(ref_kind: RefKind, id: &str, hops: &[Hop]) -> Option<N
             | Hop::Group(id)
             | Hop::For(id)
             | Hop::Fetch(id) => NodePathElement::new(NodeKind::Dir, id.as_str()),
+            // `Use` requires auto-unwrap through the splice group wrapper: fall back to resolve_chain.
+            Hop::Use(_) => return None,
             // Legacy field hops cannot be handled in a chain, so they are not expressed as NodePath.
             Hop::Field(_) => return None,
         };
@@ -228,6 +233,42 @@ pub fn resolve_chain(start: &Record, hops: &[Hop]) -> Option<ChainValue> {
                             .get(id)
                             .map(|v| v.iter().map(|rc| (**rc).clone()).collect::<Vec<_>>())
                             .unwrap_or_default()
+                    })
+                    .collect();
+            }
+            // `use.<id>` navigates into the splice group wrapper and auto-unwraps through
+            // the single child set (which has the same key as the wrapper id). This matches the
+            // semantics of `- use: rule.X id: Y` where rule X's public id is also Y: the wrapper
+            // record's children["Y"] contains the rule's actual output records.
+            //
+            // Specifically: `children[id]` yields the Group wrapper records; for each wrapper,
+            // if `wrapper.children[id]` exists (the rule's public output), those inner records
+            // are returned instead (auto-unwrap). When the inner key is absent the wrapper
+            // records themselves are returned (no double-unwrap; single-level navigation).
+            Hop::Use(id) => {
+                recs = recs
+                    .iter()
+                    .flat_map(|r| {
+                        let wrappers: Vec<Record> = r
+                            .children
+                            .get(id)
+                            .map(|v| v.iter().map(|rc| (**rc).clone()).collect())
+                            .unwrap_or_default();
+                        // Auto-unwrap: if each wrapper has an inner child set keyed by the same id,
+                        // descend into those inner records (splice group wrapper → rule output).
+                        wrappers.into_iter().flat_map(move |wrapper| {
+                            let inner: Vec<Record> = wrapper
+                                .children
+                                .get(id)
+                                .map(|v| v.iter().map(|rc| (**rc).clone()).collect())
+                                .unwrap_or_default();
+                            if inner.is_empty() {
+                                // No inner child set: return the wrapper itself.
+                                vec![wrapper]
+                            } else {
+                                inner
+                            }
+                        })
                     })
                     .collect();
             }

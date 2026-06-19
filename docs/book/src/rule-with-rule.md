@@ -1,6 +1,6 @@
-# Passing rules with `with` — parameterizing with records
+# Navigating splice results with `use.` — parameterizing with records
 
-You can declare a list-of-rule-records parameter using the form `type: [rule.<rule-name>]`. By passing the list of records that one rule has captured to another rule via `value: ${...}`, you can achieve a pattern where "the structure captured on the source side is used by a separate rule to validate a different location."
+Using `use.<id>` as a hop, you can descend directly into a splice result bundled by a `use: rule.X id: <id>` entry. By specifying `${dir.components_root.use.component}` as the source expression for `for`, you can iterate over collected results without going through intermediate wrapper ids.
 
 ## Directory structure
 
@@ -18,18 +18,16 @@ You can declare a list-of-rule-records parameter using the form `type: [rule.<ru
 
 ### Capturing components
 
-Inside the `components/` directory, `use: rule.component` is called with `id: comp` attached. The `component` rule captures each subdirectory using the regex `'^(?<name>.+)$'` and groups the records under `id: component`. Adding `id: comp` makes the collected results accessible via the reference path `${dir.components_root.dir.comp.dir.component}`.
+The `components/` directory is given `id: components_root` so that the entire directory can be referenced as a single object. Inside it, `use: rule.component` is called with `id: component`, which bundles the collected results of the `component` rule under the name `component` as a splice result.
 
-The `dir: components` entry is given `id: components_root`. This allows the entire `components/` directory record — including the inner `comp` captures — to be referenced as a single object.
+### Navigating with a `use.` hop
 
-### Passing components_root to the docs rule
+The for-source expression `${dir.components_root.use.component}` descends into `components_root` via `dir.components_root`, then into the splice result named `component` via the `.use.component` hop. This allows direct iteration over the list of records collected by the `component` rule.
 
-When the `root` rule calls `use: rule.docs`, it passes `components_root` via `with:`. The value is `${dir.components_root.dir.comp.dir.component}`, which is the list of records collected by the `component` rule. On the `docs` rule side, the parameter is declared as `type: [rule.component]`, meaning it receives a list of `rule.component` records.
+### Passing each component to the docs rule
 
-The `docs` rule iterates over the received `components_root` directly using `for`. The iteration target is `${with.components_root}`, and each element is bound as `component_entry`. Inside the rule body, `${value.component_entry.regex.name}` references the named capture `name` and requires the file `<name>.md`.
+Each `for` iteration binds one `rule.component` record to `component_entry`. This record is passed to `use: rule.docs` via `with:`. The `docs` rule receives it as a single `type: rule.component` record and requires the file `${with.component_entry.regex.name}.md`.
 
-For example, if `components/` contains `button/` and `input/`, then both `docs/button.md` and `docs/input.md` become mandatory.
+For example, if `components/` contains `auth/` and `billing/`, then both `docs/auth.md` and `docs/billing.md` become mandatory.
 
-### Summary
-
-This pattern passes the entire structure captured under `components/` to the `docs` rule and uses it to validate the `docs/` directory. Keeping `for` inside the rule rather than at the call site encapsulates the iteration logic within `docs`. It is an effective pattern when you want to express cross-directory correspondence relationships in a type-safe manner.
+This pattern lets the `root` rule control iteration while passing each component record to the `docs` rule in a type-safe way.

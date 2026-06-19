@@ -1,6 +1,6 @@
-# `with` によるルール渡しとレコードのパラメータ化
+# `use.` ホップによるルール渡しとレコードのパラメータ化
 
-`type: [rule.<ルール名>]` の形式でルールレコードのリスト型パラメータを宣言できる。あるルールが収集したレコードのリストを `value: ${...}` で別のルールに渡すことで、ソース側で捕捉した構造を別の場所の検証に利用できる。
+`use.<id>` をホップとして使うと、`use: rule.X id: <id>` で束ねた splice 結果に参照パスの途中から降りることができる。`for` のソース式に `${dir.components_root.use.component}` を指定することで、中間の wrapper id を経由せずに収集結果を直接反復できる。
 
 ## ディレクトリ構成
 
@@ -18,16 +18,16 @@
 
 ### component の捕捉
 
-`components/` ディレクトリ内では `use: rule.component` に `id: comp` を付けて呼び出す。`component` ルールは `'^(?<name>.+)$'` の regex で各サブディレクトリを捕捉し、`id: component` でそのレコードを束ねる。`id: comp` を付けることで、`${dir.components_root.dir.comp.dir.component}` という参照パスで収集結果にアクセスできるようになる。
+`components/` ディレクトリには `id: components_root` を付与して、ディレクトリ全体を1つのオブジェクトとして参照できるようにする。その配下で `use: rule.component` に `id: component` を付けて呼び出すことで、`component` ルールの収集結果を `component` という名前の splice 結果として束ねる。
 
-`dir: components` には `id: components_root` を付与している。これにより、`components/` ディレクトリ全体のレコード(内部の `comp` 捕捉を含む)を1つのオブジェクトとして参照できる。
+### use. ホップによる参照
 
-### components_root を docs ルールへ渡す
+`for` のソース式 `${dir.components_root.use.component}` は、`dir.components_root` で `components_root` ディレクトリに降り、`.use.component` でその配下の splice 結果 `component` に降りることを表す。これにより、`component` ルールが収集したレコードのリストを直接反復できる。
 
-`root` ルールは `use: rule.docs` を呼び出す際に、`with:` で `components_root` を渡す。渡す値は `${dir.components_root.dir.comp.dir.component}` であり、これは `component` ルールが収集したレコードのリストを表す。`docs` ルールの `with` 側では `type: [rule.component]` として宣言することで、`rule.component` のリストとして受け取る。
+### 各 component を docs ルールへ渡す
 
-`docs` ルールは受け取った `components_root` を `for` で直接反復する。反復対象は `${with.components_root}` であり、各要素を `component_entry` として取り出す。ルール本体では `${value.component_entry.regex.name}` で named capture `name` を参照し、`<name>.md` というファイルを要求する。
+`for` の各反復では、`component_entry` に1つの `rule.component` レコードが束縛される。`use: rule.docs` の `with:` でこのレコードを渡す。`docs` ルール側では `type: rule.component` の単体レコードとして受け取り、`${with.component_entry.regex.name}.md` というファイルを要求する。
 
-たとえば `components/` に `button/` と `input/` があれば、`docs/button.md` と `docs/input.md` の両方が必須になる。
+たとえば `components/` に `auth/` と `billing/` があれば、`docs/auth.md` と `docs/billing.md` の両方が必須になる。
 
-このパターンにより、`components/` で捕捉したコンポーネントのリストを `docs` ルールに渡し、`docs/` の検証に使うことができる。`for` を呼び出し元ではなくルール内部に持つことで、反復ロジックを `docs` ルールにカプセル化できる。ディレクトリ間の対応関係を型安全に表現したい場合に有効である。
+このパターンにより、呼び出し元の `root` ルールで反復を制御しながら、各 component レコードを `docs` ルールへ型安全に渡すことができる。

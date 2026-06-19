@@ -5,14 +5,15 @@ use indexmap::IndexMap;
 use crate::error::SemanticError;
 use crate::yaml::{EntryId, RuleName, YamlEntry, YamlEntryKind, YamlRule};
 
-/// Checks for globally duplicate ids across all entries in all rules.
+/// Checks for duplicate ids within each rule's entry tree.
 ///
-/// Traverses each rule's entry tree as an independent scope and reports an error
-/// when the same id is used in more than one rule.
+/// Each rule is an independent lexical scope: the same id may appear in two different rules
+/// without error. A duplicate id is only an error when the same id string appears more than
+/// once within the same rule's entry tree.
 pub fn check_duplicate_id(rules: &IndexMap<RuleName, YamlRule>) -> Vec<SemanticError> {
-    let mut seen = BTreeSet::new();
     let mut errors = Vec::new();
     for rule in rules.values() {
+        let mut seen = BTreeSet::new();
         for entry in &rule.body {
             collect_ids(entry, &mut seen, &mut errors);
         }
@@ -204,6 +205,26 @@ mod tests {
         let errors = check_duplicate_id(&rules);
 
         // Assert
+        assert!(errors.is_empty());
+    }
+
+    #[test]
+    fn same_id_in_different_rules_is_not_an_error() {
+        // Arrange: two separate rules, each with an entry carrying id "shared"
+        let mut rules = IndexMap::new();
+        rules.insert(
+            RuleName("r1".to_string()),
+            make_rule(vec![make_entry(Some("shared"), None)]),
+        );
+        rules.insert(
+            RuleName("r2".to_string()),
+            make_rule(vec![make_entry(Some("shared"), None)]),
+        );
+
+        // Act
+        let errors = check_duplicate_id(&rules);
+
+        // Assert: each rule is a separate scope, so no duplicate error
         assert!(errors.is_empty());
     }
 }
